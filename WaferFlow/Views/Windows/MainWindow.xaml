@@ -1,0 +1,101 @@
+﻿<Window x:Class="WaferFlow.Views.Windows.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WaferFlow" 
+        Height="700" Width="1200"
+        MinHeight="600" MinWidth="1000"
+        WindowStartupLocation="CenterScreen"
+        Background="#F0F8FF">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="50"/>
+        </Grid.RowDefinitions>
+
+        <Border Grid.Column="0" Grid.ColumnSpan="2" 
+                Background="White" 
+                BorderBrush="#87CEEB" 
+                BorderThickness="0,0,0,1">
+            <Grid>
+                <TextBlock Text="WaferFlow" 
+                          FontSize="20" 
+                          FontWeight="Bold"
+                          Foreground="#4682B4"
+                          VerticalAlignment="Center"
+                          Margin="20,0,0,0"/>
+
+                <StackPanel x:Name="ProfilePanel"
+                           Orientation="Horizontal" 
+                           HorizontalAlignment="Right"
+                           Margin="0,0,20,0"
+                           Cursor="Hand">
+
+                    <Grid>
+                        <Ellipse Width="35" Height="35" Fill="#4682B4"/>
+                        <TextBlock x:Name="txtInitials" 
+                                  Text="ИП" 
+                                  Foreground="White"
+                                  FontWeight="Bold"
+                                  VerticalAlignment="Center"
+                                  HorizontalAlignment="Center"/>
+                    </Grid>
+
+                    <StackPanel Margin="10,0,0,0" VerticalAlignment="Center">
+                        <TextBlock x:Name="txtUserName" 
+                                  Text="Иванов И.И." 
+                                  FontWeight="Bold"
+                                  Foreground="#333"/>
+                        <TextBlock x:Name="txtUserRole" 
+                                  Text="Оператор" 
+                                  FontSize="11"
+                                  Foreground="#666"/>
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Border Grid.Row="1" Grid.RowSpan="2"
+                Background="White" 
+                BorderBrush="#87CEEB" 
+                BorderThickness="0,0,1,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel x:Name="MenuPanel" Margin="0,10,0,0"/>
+            </ScrollViewer>
+        </Border>
+
+        <Frame x:Name="MainFrame" 
+               Grid.Row="1" 
+               Grid.Column="1" 
+               Margin="20"
+               NavigationUIVisibility="Hidden"
+               Background="White"/>
+
+        <Button x:Name="BtnLogout"
+                Grid.Row="2" 
+                Grid.Column="1"
+                Content="Выход" 
+                Height="35" 
+                Width="100"
+                Margin="10"
+                HorizontalAlignment="Right"
+                Background="Transparent"
+                Foreground="#4682B4"
+                BorderBrush="#87CEEB"
+                BorderThickness="1"
+                Cursor="Hand">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="5"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+    </Grid>
+</Window>

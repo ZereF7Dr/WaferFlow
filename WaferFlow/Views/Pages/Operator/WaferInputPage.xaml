@@ -1,0 +1,275 @@
+﻿<Page x:Class="WaferFlow.Views.Pages.Operator.WaferInputPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Ввод данных пластины"
+      Background="#F0F8FF">
+
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <StackPanel Margin="30">
+
+            <TextBlock Text="Регистрация новой пластины" 
+                      FontSize="24" 
+                      FontWeight="Bold"
+                      Foreground="#4682B4"
+                      Margin="0,0,0,20"/>
+
+            <Border Background="White" 
+                    Padding="20" 
+                    CornerRadius="10"
+                    Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Информация о партии" 
+                              FontSize="16" 
+                              FontWeight="Bold"
+                              Margin="0,0,0,15"/>
+
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Номер партии:" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtBatchNumber" 
+                                 Grid.Column="1" 
+                                 Height="30"
+                                 Padding="5"
+                                 BorderBrush="#87CEEB"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,15">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Оборудование:" Grid.Column="0" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="cmbEquipment" 
+                                  Grid.Column="1" 
+                                  Height="30"
+                                  IsEditable="True"
+                                  IsTextSearchEnabled="True"
+                                  StaysOpenOnEdit="True"
+                                  DisplayMemberPath="EquipmentName"
+                                  SelectedValuePath="EquipmentId"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" 
+                    Padding="20" 
+                    CornerRadius="10"
+                    Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Физические параметры" 
+                              FontSize="16" 
+                              FontWeight="Bold"
+                              Margin="0,0,0,15"/>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Диаметр (мм):" Grid.Column="0" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="cmbDiameter" Grid.Column="1" Height="30">
+                            <ComboBoxItem Content="150 мм"/>
+                            <ComboBoxItem Content="200 мм"/>
+                            <ComboBoxItem Content="300 мм" IsSelected="True"/>
+                        </ComboBox>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Толщина (мкм):" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtThickness" Grid.Column="1" Height="30" Padding="5"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Сопротивление (Ом·см):" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtResistivity" Grid.Column="1" Height="30" Padding="5"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Плотность дислокаций:" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtDislocationDensity" Grid.Column="1" Height="30" Padding="5"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Кривизна (мкм):" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtCurvature" Grid.Column="1" Height="30" Padding="5"/>
+                    </Grid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Однородность легирования (%):" Grid.Column="0" VerticalAlignment="Center"/>
+                        <TextBox x:Name="txtDopingUniformity" Grid.Column="1" Height="30" Padding="5"/>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <!-- Дефекты -->
+            <Border Background="White" 
+        Padding="20" 
+        CornerRadius="10"
+        Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Дефекты" 
+                  FontSize="16" 
+                  FontWeight="Bold"
+                  Margin="0,0,0,15"/>
+
+                    <DataGrid x:Name="dgDefects" 
+                  AutoGenerateColumns="False"
+                  CanUserAddRows="False"
+                  CanUserDeleteRows="False"
+                  Height="150"
+                  Margin="0,0,0,10">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="Тип дефекта" Binding="{Binding DefectTypeName}" Width="150"/>
+                            <DataGridTextColumn Header="X" Binding="{Binding X_Position}" Width="60"/>
+                            <DataGridTextColumn Header="Y" Binding="{Binding Y_Position}" Width="60"/>
+                            <DataGridTextColumn Header="Степень" Binding="{Binding Severity}" Width="60"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+
+                    <Grid Margin="0,0,0,10">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                            <ColumnDefinition Width="Auto"/>
+                        </Grid.ColumnDefinitions>
+
+                        <ComboBox x:Name="cmbDefectType" 
+                      Grid.Column="0" 
+                      Height="30"
+                      Margin="0,0,10,0"
+                      DisplayMemberPath="DefectName"
+                      SelectedValuePath="DefectTypeId"/>
+
+                        <StackPanel Grid.Column="1" Orientation="Horizontal" Margin="0,0,10,0">
+                            <TextBlock Text="X:" VerticalAlignment="Center" Margin="0,0,5,0" FontSize="12" Foreground="#666" Width="20"/>
+                            <TextBox x:Name="txtDefectX" Width="40" Height="30" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <StackPanel Grid.Column="2" Orientation="Horizontal" Margin="0,0,10,0">
+                            <TextBlock Text="Y:" VerticalAlignment="Center" Margin="0,0,5,0" FontSize="12" Foreground="#666" Width="20"/>
+                            <TextBox x:Name="txtDefectY" Width="40" Height="30" VerticalAlignment="Center"/>
+                        </StackPanel>
+
+                        <ComboBox x:Name="cmbDefectSeverity" 
+                      Grid.Column="3" 
+                      Width="40"
+                      Height="30"
+                      Margin="0,0,10,0">
+                            <ComboBoxItem Content="1"/>
+                            <ComboBoxItem Content="2"/>
+                            <ComboBoxItem Content="3" IsSelected="True"/>
+                            <ComboBoxItem Content="4"/>
+                            <ComboBoxItem Content="5"/>
+                            <ComboBoxItem Content="6"/>
+                            <ComboBoxItem Content="7"/>
+                            <ComboBoxItem Content="8"/>
+                            <ComboBoxItem Content="9"/>
+                            <ComboBoxItem Content="10"/>
+                        </ComboBox>
+                    </Grid>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,10,0,0">
+                        <Button Content="Добавить дефект" 
+                    Width="120" Height="30"
+                    Margin="0,0,10,0"
+                    Background="#27AE60"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Click="BtnAddDefect_Click"/>
+                        <Button Content="Удалить выбранный" 
+                    Width="120" Height="30"
+                    Background="#E74C3C"
+                    Foreground="White"
+                    BorderThickness="0"
+                    Click="BtnRemoveDefect_Click"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+
+            <Border Background="White" 
+                    Padding="20" 
+                    CornerRadius="10"
+                    Margin="0,0,0,20">
+                <StackPanel>
+                    <TextBlock Text="Приоритет обработки" 
+                              FontSize="16" 
+                              FontWeight="Bold"
+                              Margin="0,0,0,15"/>
+
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+
+                        <TextBlock Text="Приоритет:" Grid.Column="0" VerticalAlignment="Center"/>
+                        <ComboBox x:Name="cmbPriority" Grid.Column="1" Height="30">
+                            <ComboBoxItem Content="Обычный" Tag="2" IsSelected="True"/>
+                            <ComboBoxItem Content="Срочный" Tag="1"/>
+                            <ComboBoxItem Content="Низкий" Tag="3"/>
+                        </ComboBox>
+                    </Grid>
+                </StackPanel>
+            </Border>
+
+            <TextBlock x:Name="txtMessage" 
+                       Foreground="Red" 
+                       TextWrapping="Wrap"
+                       Margin="0,0,0,10"
+                       Visibility="Collapsed"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Сохранить пластину" 
+                       Width="200" 
+                       Height="40"
+                       Margin="0,0,10,0"
+                       Background="#4682B4"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       BorderThickness="0"
+                       Click="BtnSave_Click"/>
+
+                <Button Content="Очистить форму" 
+                       Width="150" 
+                       Height="40"
+                       Background="#E0E0E0"
+                       Foreground="#333"
+                       BorderThickness="0"
+                       Click="BtnClear_Click"/>
+            </StackPanel>
+
+        </StackPanel>
+    </ScrollViewer>
+</Page>

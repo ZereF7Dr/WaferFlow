@@ -1,0 +1,128 @@
+﻿<Page x:Class="WaferFlow.Views.Pages.Admin.UsersPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Управление пользователями"
+      Background="#F0F8FF">
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="380"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" 
+                Background="White" 
+                CornerRadius="10"
+                Padding="15"
+                Margin="0,0,15,0">
+            <StackPanel>
+                <TextBlock Text="Пользователи системы" 
+                          FontSize="18" 
+                          FontWeight="Bold"
+                          Foreground="#4682B4"
+                          Margin="0,0,0,15"/>
+
+                <TextBox x:Name="txtSearch" 
+                         Height="30" 
+                         Padding="5"
+                         Margin="0,0,0,10"
+                         ToolTip="Поиск по ФИО, логину, роли"
+                         TextChanged="TxtSearch_TextChanged"/>
+
+                <ListBox x:Name="lstUsers" 
+                         Height="450"
+                         SelectionChanged="LstUsers_SelectionChanged"/>
+
+                <TextBlock x:Name="txtListStatus" 
+                           Foreground="Gray" 
+                           Margin="0,10,0,0"
+                           HorizontalAlignment="Center"
+                           FontSize="11"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" 
+                Background="White" 
+                CornerRadius="10"
+                Padding="15">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+
+                    <TextBlock Text="Редактирование пользователя" 
+                              FontSize="16" 
+                              FontWeight="Bold"
+                              Foreground="#4682B4"
+                              Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Логин" FontSize="11" Foreground="Gray" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtLogin" Height="35" Padding="5" Margin="0,0,0,10" IsEnabled="False"/>
+
+                    <TextBlock Text="Фамилия" FontSize="11" Foreground="Gray" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtLastName" Height="35" Padding="5" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Имя" FontSize="11" Foreground="Gray" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtFirstName" Height="35" Padding="5" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Отчество" FontSize="11" Foreground="Gray" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtPatronymic" Height="35" Padding="5" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Email" FontSize="11" Foreground="Gray" Margin="0,0,0,5"/>
+                    <TextBox x:Name="txtEmail" Height="35" Padding="5" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Роль" FontSize="11" Foreground="Gray" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cmbRole" Height="35" Margin="0,0,0,10">
+                        <ComboBoxItem Content="Оператор" Tag="Operator"/>
+                        <ComboBoxItem Content="Инженер" Tag="Engineer"/>
+                        <ComboBoxItem Content="Менеджер" Tag="Manager"/>
+                        <ComboBoxItem Content="Администратор" Tag="Admin"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Смена" FontSize="11" Foreground="Gray" Margin="0,0,0,5"/>
+                    <ComboBox x:Name="cmbShift" Height="35" Margin="0,0,0,10">
+                        <ComboBoxItem Content="Не назначена" Tag=""/>
+                        <ComboBoxItem Content="Утренняя (08:00-16:00)" Tag="1"/>
+                        <ComboBoxItem Content="Дневная (16:00-00:00)" Tag="2"/>
+                        <ComboBoxItem Content="Ночная (00:00-08:00)" Tag="3"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Новый пароль (оставьте пустым, если не менять)" FontSize="11" Foreground="Gray" Margin="0,0,0,5"/>
+                    <PasswordBox x:Name="txtNewPassword" Height="35" Padding="5" Margin="0,0,0,10"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" Margin="0,10,0,0">
+                        <Button Content="Сохранить" 
+                               Width="100" Height="35"
+                               Margin="0,0,10,0"
+                               Background="#4682B4"
+                               Foreground="White"
+                               BorderThickness="0"
+                               Cursor="Hand"
+                               Click="BtnSave_Click"/>
+                        <Button Content="Добавить" 
+                               Width="100" Height="35"
+                               Margin="0,0,10,0"
+                               Background="#27AE60"
+                               Foreground="White"
+                               BorderThickness="0"
+                               Cursor="Hand"
+                               Click="BtnAdd_Click"/>
+                        <Button Content="Удалить" 
+                               Width="100" Height="35"
+                               Background="#E74C3C"
+                               Foreground="White"
+                               BorderThickness="0"
+                               Cursor="Hand"
+                               Click="BtnDelete_Click"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="txtMessage" 
+                               Foreground="Red" 
+                               TextWrapping="Wrap"
+                               Margin="0,10,0,0"
+                               HorizontalAlignment="Center"
+                               Visibility="Collapsed"/>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Page>

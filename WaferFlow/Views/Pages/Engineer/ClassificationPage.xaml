@@ -1,0 +1,151 @@
+﻿<Page x:Class="WaferFlow.Views.Pages.Engineer.ClassificationPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Классификация пластин"
+      Background="#F0F8FF">
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" 
+                Background="White" 
+                CornerRadius="10"
+                Padding="15">
+            <StackPanel>
+                <TextBlock Text="Пластины на классификацию" 
+                          FontSize="16" 
+                          FontWeight="Bold"
+                          Foreground="#4682B4"
+                          Margin="0,0,0,10"/>
+
+                <TextBox x:Name="SearchWaferBox" 
+                         Height="30" 
+                         Padding="5"
+                         Margin="0,0,0,10"
+                         ToolTip="Поиск по серийному номеру или партии"/>
+
+                <ListBox x:Name="WafersList" 
+                         Height="450"
+                         DisplayMemberPath="DisplayInfo"/>
+
+                <TextBlock x:Name="WafersCount" 
+                           Foreground="Gray" 
+                           Margin="0,10,0,0"
+                           HorizontalAlignment="Center"
+                           FontSize="11"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" 
+                Background="White" 
+                CornerRadius="10"
+                Padding="15"
+                Margin="10,0,0,0">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+
+                    <TextBlock Text="Детали пластины" 
+                              FontSize="16" 
+                              FontWeight="Bold"
+                              Foreground="#4682B4"
+                              Margin="0,0,0,10"/>
+
+                    <Border Background="#F5F5F5" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock Text="Серийный номер" FontSize="11" Foreground="Gray"/>
+                            <TextBlock x:Name="SerialText" FontSize="14" FontWeight="Bold"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="#F5F5F5" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock Text="Параметры" FontSize="11" Foreground="Gray"/>
+                            <TextBlock x:Name="DiameterText"/>
+                            <TextBlock x:Name="ThicknessText"/>
+                            <TextBlock x:Name="ResistivityText"/>
+                            <TextBlock x:Name="DislocationText"/>
+                            <TextBlock x:Name="CurvatureText"/>
+                            <TextBlock x:Name="DopingText"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="#E8F4FD" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock Text="Рекомендации системы" 
+                                      FontSize="13" 
+                                      FontWeight="Bold"
+                                      Foreground="#4682B4"/>
+
+                            <ListBox x:Name="RecommendationsList" 
+                                     Height="150"
+                                     Margin="0,5,0,0"
+                                     DisplayMemberPath="DisplayName"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="#F5F5F5" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock Text="Дефекты" FontSize="11" Foreground="Gray"/>
+                            <ListBox x:Name="DefectsList" 
+                                     Height="60"
+                                     Margin="0,5,0,0"
+                                     DisplayMemberPath="DisplayInfo"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Border Background="#F5F5F5" CornerRadius="5" Padding="10" Margin="0,0,0,10">
+                        <StackPanel>
+                            <TextBlock Text="Решение" FontSize="11" Foreground="Gray"/>
+
+                            <ComboBox x:Name="DecisionCombo" Height="30" Margin="0,5,0,5">
+                                <ComboBoxItem Content="Одобрить" Tag="Approve" IsSelected="True"/>
+                                <ComboBoxItem Content="Брак" Tag="Reject"/>
+                            </ComboBox>
+
+                            <ComboBox x:Name="GenerationCombo" 
+                                      Height="30"
+                                      Margin="0,5,0,5"
+                                      DisplayMemberPath="DisplayName"
+                                      SelectedValuePath="GenerationId"
+                                      Visibility="Collapsed"/>
+
+                            <ComboBox x:Name="RejectCombo" 
+                                      Height="30"
+                                      Margin="0,5,0,5"
+                                      DisplayMemberPath="CategoryName"
+                                      SelectedValuePath="CategoryId"
+                                      Visibility="Collapsed"/>
+
+                            <TextBox x:Name="ReasonBox" 
+                                     Height="50"
+                                     Padding="5"
+                                     TextWrapping="Wrap"
+                                     AcceptsReturn="True"
+                                     Margin="0,5,0,5"/>
+                        </StackPanel>
+                    </Border>
+
+                    <Button x:Name="ApplyButton" 
+                            Content="Применить решение" 
+                            Height="40"
+                            Background="#4682B4"
+                            Foreground="White"
+                            FontWeight="Bold"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+
+                    <TextBlock x:Name="MessageText" 
+                               Foreground="Red" 
+                               TextWrapping="Wrap"
+                               Margin="0,10,0,0"
+                               HorizontalAlignment="Center"
+                               Visibility="Collapsed"/>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Page>

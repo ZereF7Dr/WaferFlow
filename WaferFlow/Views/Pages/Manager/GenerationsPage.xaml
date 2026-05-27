@@ -1,0 +1,138 @@
+﻿<Page x:Class="WaferFlow.Views.Pages.Manager.GenerationsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      Title="Управление поколениями"
+      Background="#F0F8FF">
+
+    <Grid Margin="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="400"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0" 
+                Background="White" 
+                CornerRadius="10"
+                Padding="15"
+                Margin="0,0,15,0">
+            <StackPanel>
+                <Grid Margin="0,0,0,10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Поколения процессоров" 
+                              FontSize="18" 
+                              FontWeight="Bold"
+                              Foreground="#4682B4"
+                              VerticalAlignment="Center"/>
+
+                </Grid>
+
+                <TextBox x:Name="SearchBox" 
+                         Height="30" 
+                         Padding="5"
+                         Margin="0,0,0,10"/>
+
+                <ListBox x:Name="GenerationsList" 
+                         Height="450"
+                         SelectionChanged="GenerationsList_SelectionChanged"/>
+
+                <TextBlock x:Name="ListStatus" 
+                           Foreground="Gray" 
+                           Margin="0,10,0,0"
+                           HorizontalAlignment="Center"
+                           FontSize="11"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1" 
+                Background="White" 
+                CornerRadius="10"
+                Padding="15">
+            <ScrollViewer VerticalScrollBarVisibility="Auto">
+                <StackPanel>
+
+                    <TextBlock Text="Редактирование поколения" 
+                              FontSize="16" 
+                              FontWeight="Bold"
+                              Foreground="#4682B4"
+                              Margin="0,0,0,15"/>
+
+                    <TextBlock Text="Название" FontSize="11" Foreground="#666"/>
+                    <TextBox x:Name="NameBox" Height="35" Padding="5" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Производитель" FontSize="11" Foreground="#666"/>
+                    <ComboBox x:Name="ManufacturerCombo" Height="35" Margin="0,0,0,10">
+                        <ComboBoxItem Content="Intel"/>
+                        <ComboBoxItem Content="AMD"/>
+                        <ComboBoxItem Content="Apple"/>
+                    </ComboBox>
+
+                    <TextBlock Text="Серия" FontSize="11" Foreground="#666"/>
+                    <TextBox x:Name="SeriesBox" Height="35" Padding="5" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Год выпуска" FontSize="11" Foreground="#666"/>
+                    <TextBox x:Name="YearBox" Height="35" Padding="5" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Техпроцесс (нм)" FontSize="11" Foreground="#666"/>
+                    <TextBox x:Name="NodeBox" Height="35" Padding="5" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Рынок" FontSize="11" Foreground="#666"/>
+                    <ComboBox x:Name="MarketCombo" Height="35" Margin="0,0,0,10">
+                        <ComboBoxItem Content="Desktop"/>
+                        <ComboBoxItem Content="Mobile"/>
+                        <ComboBoxItem Content="Server"/>
+                        <ComboBoxItem Content="IoT"/>
+                    </ComboBox>
+
+                    <TextBlock Text="TDP (Вт)" FontSize="11" Foreground="#666"/>
+                    <TextBox x:Name="TdpBox" Height="35" Padding="5" Margin="0,0,0,10"/>
+
+                    <TextBlock Text="Приоритет" FontSize="11" Foreground="#666"/>
+                    <ComboBox x:Name="PriorityCombo" Height="35" Margin="0,0,0,10">
+                        <ComboBoxItem Content="Высокий" Tag="1"/>
+                        <ComboBoxItem Content="Средний" Tag="2" IsSelected="True"/>
+                        <ComboBoxItem Content="Низкий" Tag="3"/>
+                    </ComboBox>
+
+                    <CheckBox x:Name="ActiveCheck" Content="Активно" Margin="0,0,0,15"/>
+
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                        <Button x:Name="SaveButton" 
+                                Content="Сохранить" 
+                                Width="90" Height="35"
+                                Margin="0,0,10,0"
+                                Background="#4682B4"
+                                Foreground="White"
+                                BorderThickness="0"/>
+                        <Button x:Name="DeleteButton" 
+                                Content="Удалить" 
+                                Width="90" Height="35"
+                                Background="#E74C3C"
+                                 Margin="0,0,10,0"
+                                Foreground="White"
+                                BorderThickness="0"/>
+
+                        <Button x:Name="NewButton" 
+                            Grid.Column="1"
+                            Content="Добавить" 
+                            Width="90" Height="35"
+                            Background="#27AE60"
+                            Foreground="White"
+                            BorderThickness="0"
+                            Cursor="Hand"/>
+                    </StackPanel>
+
+                    <TextBlock x:Name="MessageText" 
+                               Foreground="Red" 
+                               TextWrapping="Wrap"
+                               Margin="0,10,0,0"
+                               HorizontalAlignment="Center"
+                               Visibility="Collapsed"/>
+
+                </StackPanel>
+            </ScrollViewer>
+        </Border>
+    </Grid>
+</Page>

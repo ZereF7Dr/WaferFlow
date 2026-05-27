@@ -1,0 +1,75 @@
+﻿<Window x:Class="WaferFlow.Views.Windows.LoginWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="WaferFlow - Вход в систему" 
+         Height="700" Width="1200"
+        MinHeight="600" MinWidth="1000"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        Background="#F0F8FF">
+    <Grid>
+        <Border Width="320" Height="380" 
+                Background="White" 
+                CornerRadius="10"
+                BorderBrush="#87CEEB" 
+                BorderThickness="1">
+
+            <StackPanel Margin="30" VerticalAlignment="Center">
+
+                <TextBlock Text="WaferFlow" 
+                          FontSize="28" 
+                          FontWeight="Bold" 
+                          Foreground="#4682B4"
+                          HorizontalAlignment="Center"
+                          Margin="0,0,0,5"/>
+
+                <TextBlock Text="Система контроля кремниевых пластин" 
+                          FontSize="12" 
+                          Foreground="#666"
+                          HorizontalAlignment="Center"
+                          Margin="0,0,0,30"/>
+
+                <TextBlock Text="Логин" 
+                          Foreground="#333" 
+                          Margin="0,0,0,5"/>
+                <TextBox x:Name="txtLogin" 
+                        Height="35" 
+                        Padding="10,5"
+                        BorderBrush="#87CEEB"
+                        BorderThickness="1"/>
+
+                <TextBlock Text="Пароль" 
+                          Foreground="#333" 
+                          Margin="0,15,0,5"/>
+                <PasswordBox x:Name="txtPassword" 
+                            Height="35" 
+                            Padding="10,5"
+                            BorderBrush="#87CEEB"
+                            BorderThickness="1"/>
+
+                <TextBlock x:Name="txtError" 
+                          Foreground="Red" 
+                          FontSize="11"
+                          TextWrapping="Wrap"
+                          Margin="0,10,0,0"
+                          Visibility="Collapsed"/>
+
+                <Button Content="Войти" 
+                       Height="40" 
+                       Margin="0,20,0,0"
+                       Background="#4682B4"
+                       Foreground="White"
+                       FontWeight="Bold"
+                       BorderThickness="0"
+                       Click="BtnLogin_Click">
+                    <Button.Resources>
+                        <Style TargetType="Border">
+                            <Setter Property="CornerRadius" Value="5"/>
+                        </Style>
+                    </Button.Resources>
+                </Button>
+
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
